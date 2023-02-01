@@ -1,6 +1,6 @@
-import {React,useRef,useState,} from "react";
-import axios from "axios";
-import api from "../../services";
+import React from "react";
+//import axios from "axios";
+//import api from "../../services";
 
 
 import imgBurguer from '../../assets/burguer.png'

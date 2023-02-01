@@ -1,20 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
-import Home from './pages/home'
-import Orders from './pages/orders'
+import Home from './pages/Home'
+import Orders from './pages/Orders'
 
-function mRoutes() {
+const Routes = () => {
 
     return (
 
         <Router>
-            <Routes>
-                <Route path="/" element={Home}/>
-                <Route path="/orders" element={Orders}/>
-            </Routes>
+            <Switch>
+                <Route  exact path='/' component={Home}/>
+                <Route  exact path='/pedidos' component={Orders} />
+            </Switch>
         </Router>
 
     )
 }
-export default mRoutes
+export default Routes
