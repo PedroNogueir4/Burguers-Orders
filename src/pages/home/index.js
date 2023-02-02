@@ -1,21 +1,33 @@
-import React from "react";
-//import axios from "axios";
-//import api from "../../services";
+import { React, useRef, useState } from "react";
+import api from "../../services";
+import { useHistory } from "react-router-dom";
 
 
 import imgBurguer from '../../assets/burguer.png'
-import { Container, ContainerItens, Image, H1, Label, Input, Button } from './styles';
+import { Container, ContainerItens, Image, H1, Label, } from './styles';
+import Buttons from "../../components/Button";
+import Inputs from "../../components/Input"
 
 function App() {
 
+  const [users, setUsers] = useState([])
+  const history = useHistory()
+  const inputOrder = useRef()
+  const inputName = useRef()
 
+  async function addNewOrder() {
 
- async function addNewOrder(){
+    const data = await api.post("",
+      {
 
+        order: inputOrder.current.value,
+        clientName: inputName.current.value,
 
- 
+      })
+console.log(data)
 
-}
+    history.push('/pedidos')
+  }
 
   return (
     <Container>
@@ -25,10 +37,10 @@ function App() {
           <H1>Faça seu pedido!</H1>
         </div>
         <Label>Pedido</Label>
-        <Input  type='text' />
+        <Inputs ref={inputOrder} type='text' />
         <Label>Nome do Cliente</Label>
-        <Input  type='text'/>
-        <Button onClick={addNewOrder}>Novo Pedido</Button>
+        <Inputs ref={inputName} type='text' />
+        <Buttons onClick={addNewOrder} >Novo Pedido</Buttons>
       </ContainerItens>
 
     </Container>
