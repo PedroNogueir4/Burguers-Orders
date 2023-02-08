@@ -23,4 +23,15 @@ color: white;
 }
 ${props => props.isColor && ` background: rgba(255, 255, 255, 0.14)`}
 
+@media (max-width: 700px){
+    
+    margin-top: 60px;
+    
+}
+@media (min-height: 800px){
+    
+    margin-top: 110px;
+  
+  }
+
 `

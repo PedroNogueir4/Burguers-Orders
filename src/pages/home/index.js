@@ -4,9 +4,8 @@ import { useHistory } from "react-router-dom";
 
 
 import imgBurguer from '../../assets/burguer.png'
-import { Container, ContainerItens, Image, H1, Label, } from './styles';
+import { Container, ContainerItens, Image, H1, Label,Inputs } from './styles';
 import Buttons from "../../components/Button";
-import Inputs from "../../components/Input"
 
 function App() {
 
@@ -17,15 +16,17 @@ function App() {
 
   async function addNewOrder() {
 
-    const data = await api.post("",
+    const { data :newOrder }= await api.post("http://localhost:3001/order",
       {
 
         order: inputOrder.current.value,
         clientName: inputName.current.value,
 
-      })
-console.log(data)
+      });
 
+  setUsers([...users , newOrder])
+  console.log(users)
+  
     history.push('/pedidos')
   }
 
